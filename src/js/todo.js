@@ -51,6 +51,4 @@ const displayTodos = () => {
   toDoList.innerHTML = myToDos;
 };
 
-displayTodos();
-
 export { displayTodos };
