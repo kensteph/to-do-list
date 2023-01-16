@@ -1,4 +1,3 @@
-const form = document.querySelector('#addToDoForm');
 const toDoList = document.querySelector('.toDoList');
 
 // My To Do list
@@ -33,7 +32,7 @@ const toDoListsArray = [
 const displayTodos = () => {
   // Sort the table of todos
   const sortedTodoLists = toDoListsArray.sort((a, b) => a.index - b.index);
-  let myToDos = ``;
+  let myToDos = '';
   sortedTodoLists.forEach((todo) => {
     myToDos += `
     <li class="list-item" id="${todo.index}">
@@ -51,4 +50,5 @@ const displayTodos = () => {
   toDoList.innerHTML = myToDos;
 };
 
+// eslint-disable-next-line import/prefer-default-export
 export { displayTodos };
