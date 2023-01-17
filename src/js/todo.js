@@ -1,7 +1,7 @@
 const toDoList = document.querySelector('.toDoList');
 
 // My To Do list
-const toDoListsArray = [];
+let toDoListsArray = [];
 
 const displayTodos = () => {
   // Sort the table of todos
@@ -12,13 +12,18 @@ const displayTodos = () => {
     <li class="list-item" id="${todo.index}">
           <article class="status-title">
             <input class="status" type="checkbox" title="check!">
-            <span class="title">${todo.description}</span>
+            <input data-id="${todo.index}" type="text" class="toDoEditInput" value="${todo.description}">
           </article>
-          <article class="verticalDots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
+          <article class="actions">
+              <i class="fa fa-trash-can remove"></i>
+              <article class="verticalDots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+              </article>
           </article>
+          
+          
         </li>`;
   });
   toDoList.innerHTML = myToDos;
@@ -41,4 +46,9 @@ const addTodo = () => {
   }
 };
 
-export { displayTodos, addTodo };
+const deleteTodo = (todoId) => {
+  todoId = +todoId;
+  toDoListsArray = toDoListsArray.filter((book) => todoId !== book.index);
+  displayTodos();
+};
+export { displayTodos, addTodo, deleteTodo };

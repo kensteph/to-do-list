@@ -33,10 +33,6 @@ li {
   border-bottom: 1px solid lightgray;
 }
 
-.icon {
-  color: lightgrey;
-}
-
 /* LIST HEADER */
 
 .list-header {
@@ -69,6 +65,13 @@ li {
   font-style: italic;
 }
 
+.toDoEditInput {
+  width: 90%;
+  font-size: 18px;
+  font-weight: 500;
+  border: none;
+}
+
 /* LIST BODY */
 
 .toDoList {
@@ -99,20 +102,40 @@ li {
 }
 
 .title {
+  /* width: 600px; */
   font-size: 18px;
+  word-wrap: break-word;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
 }
 
 .verticalDots {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  align-items: flex-end;
+  cursor: all-scroll;
+  gap: 2px;
 }
 
 .dot {
-  width: 4px;
-  height: 4px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background-color: lightgrey;
+}
+
+.icon {
+  color: lightgrey;
+}
+
+.remove {
+  width: 25px;
+  height: 25px;
+  color: rgb(6, 6, 6);
+  cursor: pointer;
 }
 
 /* CLEAR BUTTON */
