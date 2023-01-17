@@ -51,4 +51,18 @@ const deleteTodo = (todoId) => {
   toDoListsArray = toDoListsArray.filter((book) => todoId !== book.index);
   displayTodos();
 };
-export { displayTodos, addTodo, deleteTodo };
+
+const editTodo = (todoId, newVal) => {
+  todoId = +todoId;
+  toDoListsArray = toDoListsArray.map((todo) => {
+    if (todoId === todo.index) {
+      return { ...todo, description: newVal };
+    }
+    return todo;
+  });
+  displayTodos();
+};
+
+export {
+  displayTodos, addTodo, deleteTodo, editTodo,
+};

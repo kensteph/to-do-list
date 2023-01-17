@@ -5,7 +5,9 @@ import {
   faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import './css/index.css';
-import { displayTodos, addTodo, deleteTodo } from './js/todo.js';
+import {
+  displayTodos, addTodo, deleteTodo, editTodo,
+} from './js/todo.js';
 
 // Using of the icon we want from fontawesome
 library.add(faRefresh, faArrowLeft, faTrashAlt);
@@ -31,5 +33,17 @@ toDoList.addEventListener('click', (event) => {
     }
     const todoId = parent.id;
     deleteTodo(todoId);
+  }
+  console.log('Parent', target);
+});
+
+// ONFOCUSLOST
+toDoList.addEventListener('focusout', (event) => {
+  const { target } = event;
+  const parent = target.parentElement.parentElement;
+  console.log(parent);
+  if (target.type === 'text') {
+    const { id } = target.dataset;
+    editTodo(id, target.value);
   }
 });
