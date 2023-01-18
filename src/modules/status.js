@@ -20,8 +20,7 @@ const clearAllcompleteTodo = () => {
   toDoListsArray = toDoListsArray.filter((todo) => todo.completed === false);
   // Reindexing
   const arrLength = toDoListsArray.length;
-  // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < arrLength; i++) {
+  for (let i = 0; i < arrLength; i += 1) {
     toDoListsArray[i].index = i + 1;
   }
   // Save the changes in local Storage

@@ -53,8 +53,7 @@ const deleteTodo = (todoId) => {
   toDoListsArray = toDoListsArray.filter((book) => todoId !== book.index);
   // Reindexing
   const arrLength = toDoListsArray.length;
-  // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < arrLength; i++) {
+  for (let i = 0; i < arrLength; i += 1) {
     toDoListsArray[i].index = i + 1;
   }
   // Save to local storage
