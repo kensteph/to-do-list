@@ -1,6 +1,10 @@
 import './css/index.css';
+import { completeTodo } from './modules/status.js';
 import {
-  displayTodos, addTodo, deleteTodo, editTodo,
+  displayTodos,
+  addTodo,
+  deleteTodo,
+  editTodo,
 } from './modules/todo-funtionalities.js';
 
 displayTodos();
@@ -27,6 +31,28 @@ toDoList.addEventListener('click', (event) => {
     }
     const todoId = parent.id;
     deleteTodo(todoId);
+  }
+
+  // COMPLETE TODO
+  if (target.type === 'checkbox' && target.classList.contains('status')) {
+    const todoId = target.dataset.id;
+    // Get the input description
+    const inputText = target.nextElementSibling;
+    // Get the valu of checkd
+    const isCheck = target.checked;
+    if (isCheck) {
+      // Set it read only
+      inputText.setAttribute('readonly', true);
+      // Set the text decoration line through
+      inputText.classList.add('completed');
+    } else {
+      // Set it read only
+      inputText.setAttribute('readonly', false);
+      // Remove text decoration line through
+      inputText.classList.remove('completed');
+    }
+    completeTodo(todoId);
+    displayTodos();
   }
 });
 
