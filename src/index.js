@@ -1,5 +1,5 @@
 import './css/index.css';
-import { completeTodo } from './modules/status.js';
+import { completeTodo, clearAllcompleteTodo } from './modules/status.js';
 import {
   displayTodos,
   addTodo,
@@ -63,4 +63,11 @@ toDoList.addEventListener('focusout', (event) => {
     const { id } = target.dataset;
     editTodo(id, target.value);
   }
+});
+
+// CLEAR ALL COMPLETED TODO
+const clearCompleteTodo = document.querySelector('#clearCompleteTodo');
+clearCompleteTodo.addEventListener('click', () => {
+  clearAllcompleteTodo();
+  displayTodos();
 });

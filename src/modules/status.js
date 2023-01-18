@@ -14,4 +14,18 @@ const completeTodo = (todoId) => {
   Storage.saveToLocalStorage(toDoListsArray);
 };
 
-export { completeTodo };
+const clearAllcompleteTodo = () => {
+  // Get todos from Local Storage
+  let toDoListsArray = Storage.getDataFromLocalStorage();
+  toDoListsArray = toDoListsArray.filter((todo) => todo.completed === false);
+  // Reindexing
+  const arrLength = toDoListsArray.length;
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < arrLength; i++) {
+    toDoListsArray[i].index = i + 1;
+  }
+  // Save the changes in local Storage
+  Storage.saveToLocalStorage(toDoListsArray);
+};
+
+export { completeTodo, clearAllcompleteTodo };

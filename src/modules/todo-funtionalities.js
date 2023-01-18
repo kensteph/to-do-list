@@ -51,6 +51,7 @@ const addTodo = () => {
 const deleteTodo = (todoId) => {
   todoId = +todoId;
   toDoListsArray = toDoListsArray.filter((book) => todoId !== book.index);
+  // Reindexing
   const arrLength = toDoListsArray.length;
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < arrLength; i++) {
