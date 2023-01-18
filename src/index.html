@@ -13,10 +13,15 @@
   <main>
     <section class="container">
       <ul class="list-header">
-        <li class="header"> <span> Today's To Do</span> <i class="fa fa-refresh icon"></i></li>
+        <li class="header"> <span> Today's To Do</span><span class="material-symbols-outlined icon">
+            cached
+          </span></li>
         <li>
           <form id="addToDoForm" autocomplete="off"><input type="text" id="toDoInput"
-              placeholder="Add to your list..."><i class="fa fa-arrow-left icon"></i></form>
+              placeholder="Add to your list..."><span class="material-symbols-outlined icon" id="addIcon"
+              title="Click to add new task">
+              keyboard_return
+            </span></form>
         </li>
       </ul>
       <ul class="toDoList"></ul>
