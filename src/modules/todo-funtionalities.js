@@ -1,3 +1,5 @@
+import Storage from "./storage";
+
 const toDoList = document.querySelector('.toDoList');
 
 // My To Do list

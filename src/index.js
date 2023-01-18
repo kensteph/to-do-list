@@ -1,7 +1,7 @@
 import './css/index.css';
 import {
   displayTodos, addTodo, deleteTodo, editTodo,
-} from './js/todo.js';
+} from './modules/todo-funtionalities.js';
 
 displayTodos();
 
