@@ -1,4 +1,5 @@
-import Storage from "./storage";
+import Storage from './storage.js';
+import Todo from './todo.js';
 
 const toDoList = document.querySelector('.toDoList');
 
@@ -6,6 +7,8 @@ const toDoList = document.querySelector('.toDoList');
 let toDoListsArray = [];
 
 const displayTodos = () => {
+  // Get the todos from local storage
+  toDoListsArray = Storage.getDataFromLocalStorage();
   // Sort the table of todos
   const sortedTodoLists = toDoListsArray.sort((a, b) => a.index - b.index);
   let myToDos = '';
@@ -32,16 +35,14 @@ const displayTodos = () => {
 
 const addTodo = () => {
   const toDoInput = document.querySelector('#toDoInput');
-  const todo = toDoInput.value;
+  const todoDescription = toDoInput.value;
 
-  if (todo.trim().length !== 0) {
+  if (todoDescription.trim().length !== 0) {
     const todoId = toDoListsArray.length + 1;
-    const todoObj = {
-      description: todo,
-      completed: false,
-      index: todoId,
-    };
+    const todoObj = new Todo(todoDescription, todoId);
     toDoListsArray.push(todoObj);
+    // Save to local storage
+    Storage.saveToLocalStorage(toDoListsArray);
     toDoInput.value = '';
     displayTodos();
   }
@@ -55,6 +56,8 @@ const deleteTodo = (todoId) => {
   for (let i = 0; i < arrLength; i++) {
     toDoListsArray[i].index = i + 1;
   }
+  // Save to local storage
+  Storage.saveToLocalStorage(toDoListsArray);
   displayTodos();
 };
 
@@ -66,6 +69,8 @@ const editTodo = (todoId, newVal) => {
     }
     return todo;
   });
+  // Save to local storage
+  Storage.saveToLocalStorage(toDoListsArray);
   displayTodos();
 };
 
