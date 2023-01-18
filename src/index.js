@@ -1,6 +1,10 @@
 import './css/index.css';
+import { completeTodo, clearAllcompleteTodo } from './modules/status.js';
 import {
-  displayTodos, addTodo, deleteTodo, editTodo,
+  displayTodos,
+  addTodo,
+  deleteTodo,
+  editTodo,
 } from './modules/todo-funtionalities.js';
 
 displayTodos();
@@ -28,6 +32,28 @@ toDoList.addEventListener('click', (event) => {
     const todoId = parent.id;
     deleteTodo(todoId);
   }
+
+  // COMPLETE TODO
+  if (target.type === 'checkbox' && target.classList.contains('status')) {
+    const todoId = target.dataset.id;
+    // Get the input description
+    const inputText = target.nextElementSibling;
+    // Get the valu of checkd
+    const isCheck = target.checked;
+    if (isCheck) {
+      // Set it read only
+      inputText.setAttribute('readonly', true);
+      // Set the text decoration line through
+      inputText.classList.add('completed');
+    } else {
+      // Set it read only
+      inputText.setAttribute('readonly', false);
+      // Remove text decoration line through
+      inputText.classList.remove('completed');
+    }
+    completeTodo(todoId);
+    displayTodos();
+  }
 });
 
 // ONFOCUSLOST
@@ -37,4 +63,11 @@ toDoList.addEventListener('focusout', (event) => {
     const { id } = target.dataset;
     editTodo(id, target.value);
   }
+});
+
+// CLEAR ALL COMPLETED TODO
+const clearCompleteTodo = document.querySelector('#clearCompleteTodo');
+clearCompleteTodo.addEventListener('click', () => {
+  clearAllcompleteTodo();
+  displayTodos();
 });
