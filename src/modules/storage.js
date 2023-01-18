@@ -12,14 +12,4 @@ export default class Storage {
       return [];
     }
   }
-
-  static removeBook(position) {
-    // Get the todos from our library
-    const todos = Storage.getDataFromLocalStorage();
-    position = +position;
-    // Fiter the todos
-    const filteredTodos = todos.filter((todo, index) => position !== index);
-    // Save the changes
-    Storage.saveToLocalStorage(filteredTodos);
-  }
 }
