@@ -67,7 +67,7 @@
 
 > Here you can visit my live demo :
 
-- [https://kensteph.github.io/to-do-list/dist/]()
+- [https://kensteph.github.io/to-do-list/dist/index.html]()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
