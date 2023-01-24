@@ -95,7 +95,7 @@ li {
   padding: 14px;
 }
 
-.list-item:hover {
+.selected {
   background-color: rgba(247, 247, 118, 0.837);
 }
 
