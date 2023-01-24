@@ -22,6 +22,12 @@ const toDoList = document.querySelector('.toDoList');
 // ONCLIK
 toDoList.addEventListener('click', (event) => {
   const { target } = event;
+  if (target.type === 'text' && target.classList.contains('toDoEditInput')) {
+    const li = target.parentElement.parentElement;
+    li.classList.add('selected');
+    // Remove the text decoration line through
+    target.classList.remove('completed');
+  }
   // DELETE TODO
   if (target.classList.contains('remove')) {
     // Click from delete button
@@ -60,8 +66,15 @@ toDoList.addEventListener('click', (event) => {
 toDoList.addEventListener('focusout', (event) => {
   const { target } = event;
   if (target.type === 'text' && !target.classList.contains('completed')) {
+    const li = target.parentElement.parentElement;
+    li.classList.remove('selected');
     const { id } = target.dataset;
-    editTodo(id, target.value);
+    if (target.value.trim() === '') {
+      // Remove the todo
+      deleteTodo(id);
+    } else {
+      editTodo(id, target.value);
+    }
   }
 });
 
